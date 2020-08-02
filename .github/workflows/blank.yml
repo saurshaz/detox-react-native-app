@@ -41,11 +41,12 @@ jobs:
         android_pw: ${{ secrets.android_pw }}
         android_alias: ${{ secrets.android_alias }}
       run: |
-        echo "$KEYSTORE" | xxd -r -p - > app/release.keystore
-        echo $AT > ~/play_api_key_rn_spaceviewer.json
-        fastlane android detox
-        rm -f ~/play_api_key_rn_spaceviewer.json
-        rm -f app/release.keystore
+        cd android && ./gradlew assembleRelease
+        #echo "$KEYSTORE" | xxd -r -p - > app/release.keystore
+        #echo $AT > ~/play_api_key_rn_spaceviewer.json
+        #fastlane android detox
+        #rm -f ~/play_api_key_rn_spaceviewer.json
+        #rm -f app/release.keystore
     - name: Test
       timeout-minutes: 10
       run: |
@@ -53,7 +54,7 @@ jobs:
         $ANDROID_HOME/emulator/emulator @emu -no-boot-anim &
         adb wait-for-device; adb shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done;'; adb shell wm dismiss-keyguard
         mkdir -p ./artifacts
-        yarn workspace mobile test-detox-android-release --record-videos all
+        yarn test:android-release-ci --record-videos all
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
