@@ -33,7 +33,7 @@ jobs:
       run: |
         sudo gem install fastlane -NV
     - name: Build
-      working-directory: packages/mobile/android
+      working-directory: .
       env:
         KEYSTORE: ${{ secrets.ANDROID_KEYSTORE }}
         AT: ${{ secrets.ANDROID_TOKEN }}
@@ -58,4 +58,4 @@ jobs:
       if: failure()
       with:
         name: e2e-test-videos
-        path: packages/mobile/artifacts
+        path: .
