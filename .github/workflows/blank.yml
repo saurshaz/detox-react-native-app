@@ -28,7 +28,7 @@ jobs:
         $ANDROID_HOME/tools/bin/avdmanager -s create avd -n emu -k "system-images;android-28;google_apis;x86_64" -b "x86_64" -c 1G -d 7 -f
     - name: Install node_modules
       run: |
-        yarn install --frozen-lockfile
+        yarn install
     - name: Fastlane setup
       run: |
         sudo gem install fastlane -NV
