@@ -25,7 +25,7 @@
     "sanitize-filename": "^1.6.1"
   },
   "dependencies": {
-    "react-native": "^0.63.2",
+    "react-native": "^0.64.1",
     "react": "^16.13.1"
   }
 }
