@@ -21,7 +21,7 @@
     "detox": "^17.3.2",
     "jest": "26.x.x",
     "jest-circus": "26.x.x",
-    "mocha": "^8.1.0",
+    "mocha": "^8.4.0",
     "sanitize-filename": "^1.6.1"
   },
   "dependencies": {
